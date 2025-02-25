@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>اسمو ايروف</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        direction: rtl;
+      }
+      header {
+        background-color: #007bff;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        font-size: 24px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        text-align: center;
+      }
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+        justify-content: center;
+      }
+      form input,
+      form select {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        flex: 1 1 200px;
+      }
+      form button {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      table th,
+      table td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+      }
+      .angels {
+        margin-top: 40px;
+        text-align: center;
+      }
+      .angels h2 {
+        margin-bottom: 20px;
+      }
+      .angels img {
+        width: 300px;
+        margin: 10px;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>اسمو ايروف</header>
+    <div class="container">
+      <h2>الحضور و الغياب</h2>
+      <form id="attendanceForm">
+        <input
+          type="text"
+          id="employeeName"
+          placeholder="اسم الموظف"
+          required
+        />
+        <select id="attendanceStatus" required>
+          <option value="">اختر الحالة</option>
+          <option value="حضور">حضور</option>
+          <option value="غياب">غياب</option>
+        </select>
+        <button type="submit">تسجيل</button>
+      </form>
+
+      <table id="recordsTable">
+        <thead>
+          <tr>
+            <th>الاسم</th>
+            <th>الحالة</th>
+            <th>التاريخ والوقت</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ستضاف السجلات هنا -->
+        </tbody>
+      </table>
+
+      <div class="angels">
+        <!-- يمكنك إضافة صور الملايكة هنا -->
+      </div>
+    </div>
+
+    <script>
+      // التعامل مع نموذج تسجيل الحضور والغياب
+      document
+        .getElementById("attendanceForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const name = document.getElementById("employeeName").value;
+          const status = document.getElementById("attendanceStatus").value;
+          const now = new Date();
+
+          const record = document.createElement("tr");
+          record.innerHTML =
+            "<td>" +
+            name +
+            "</td>" +
+            "<td>" +
+            status +
+            "</td>" +
+            "<td>" +
+            now.toLocaleString() +
+            "</td>";
+          document.querySelector("#recordsTable tbody").appendChild(record);
+
+          // إعادة تعيين النموذج
+          this.reset();
+        });
+    </script>
+  </body>
+</html>
